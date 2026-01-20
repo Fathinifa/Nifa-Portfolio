@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fathima Nifa — HNDIT Portfolio</title>
+  <meta name="description" content="Portfolio website for Fathima Nifa , HNDIT student: projects, skills, resume, and contact." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230ea5e9'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-size='54' font-family='Arial' fill='white'%3EAT%3C/text%3E%3C/svg%3E"/>
+<style>
+  :root{
+  --bg: #101820;       /* Dark blue-black */
+  --panel: #1c2430;    
+  --text: #f1f5f9;     
+  --muted:#94a3b8;     
+  --brand:#0ea5e9;     /* Cyan */
+  --accent:#22c55e;    /* Green */
+  --ring: rgba(14,165,233,.45);
+  --shadow:0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* light mode override */
+@media (prefers-color-scheme: light){
+  :root{ 
+    --bg:#aa476b;       /* Soft pink/white */
+    --panel:#ffffff;    
+    --text:#1e293b;     
+    --muted:#64748b;    
+    --shadow:0 12px 30px rgba(0,0,0,.08);
+  } 
+}
+
+
+  
+
+  *{box-sizing:border-box}
+  html,body{margin:0;scroll-behavior:smooth;background:var(--bg);color:var(--text);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji"}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1100px;margin:auto;padding:0 20px}
+  .btn{display:inline-flex;gap:.5rem;align-items:center;background:var(--brand);color:white;border:0;padding:.8rem 1.1rem;border-radius:14px;font-weight:600;box-shadow:var(--shadow);transition:.2s;cursor:pointer}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+  .btn.alt{background:transparent;border:1.5px solid var(--brand);color:var(--brand)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .6rem;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.25);color:#7dd3fc;font-weight:600}
+  .grid{display:grid;gap:22px}
+  .shadow{box-shadow:var(--shadow)}
+  .card{background:var(--panel);border:1px solid rgba(148,163,184,.15);border-radius:18px;padding:20px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:40;background:linear-gradient(to bottom, rgba(28,31,43,.95), rgba(28,31,43,.55) 60%, transparent)}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+  .nav a.logo{font-weight:800;letter-spacing:.5px}
+  .nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+  .nav a.link{padding:.55rem .8rem;border-radius:12px;border:1px solid transparent}
+  .nav a.link:hover{border-color:rgba(148,163,184,.25);background:rgba(148,163,184,.08)}
+  .nav .theme{margin-left:10px}
+
+  /* Hero */
+  .hero{padding:80px 0 32px}
+  .hero-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center}
+  .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:10px 0 12px}
+  .hero p{color:var(--muted)}
+  .hero .actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.avatar{width:170px;height:170px;border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.08)}
+
+  .avatar img{width:100%;height:100%;object-fit:cover}
+
+  /* Sections */
+  section{padding:42px 0}
+  section .title{display:flex;align-items:center;gap:.6rem;margin-bottom:16px}
+  section .title h2{margin:0;font-size:22px}
+  section .title .line{flex:1;height:1px;background:linear-gradient(90deg, rgba(148,163,184,.25), transparent)}
+
+  /* About */
+  .about p{margin:0;color:var(--muted)}
+
+  /* Skills */
+  .skills .skill{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+  .bar{height:9px;background:rgba(148,163,184,.18);border-radius:999px;overflow:hidden}
+  .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#38bdf8);width:0;border-radius:999px;transition:width 1s ease}
+
+  /* Projects */
+  .projects .card{display:flex;flex-direction:column}
+  .projects .thumb{border-radius:12px;overflow:hidden;border:1px solid rgba(148,163,184,.2);margin-bottom:10px}
+  .projects .meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:auto}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{padding:.25rem .55rem;border-radius:999px;border:1px solid rgba(148,163,184,.25);font-size:.85rem;color:var(--muted)}
+
+  /* Timeline */
+  .timeline{position:relative}
+  .timeline::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:rgba(148,163,184,.2)}
+  .tl-item{position:relative;padding-left:46px;margin:18px 0}
+  .tl-item::before{content:"";position:absolute;left:8px;top:8px;width:18px;height:18px;background:var(--brand);border-radius:50%;box-shadow:0 0 0 4px rgba(14,165,233,.25)}
+  .tl-item h3{margin:.2rem 0}
+  .tl-item p{margin:.2rem 0;color:var(--muted)}
+
+  /* Contact */
+  form{display:grid;gap:12px}
+  input,textarea{background:transparent;border:1.5px solid rgba(148,163,184,.25);padding:.85rem 1rem;border-radius:12px;color:var(--text);outline:none}
+  input:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+  textarea{min-height:120px}
+
+  /* Footer */
+  footer{padding:30px 0;color:var(--muted)}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr}
+    .avatar{
+    width:170px;  /* mobile size smaller */
+    height:170px;
+  }
+    .nav ul{display:none}
+  }
+</style>
+
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top">AT<span style="color:var(--brand)">.</span></a>
+      <nav>
+        <ul>
+          <li><a class="link" href="#about">About</a></li>
+          <li><a class="link" href="#skills">Skills</a></li>
+          <li><a class="link" href="#projects">Projects</a></li>
+          <li><a class="link" href="#education">Education</a></li>
+          <li><a class="link" href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn alt theme" id="themeToggle" aria-label="Toggle theme">🌗 Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="chip">HNDIT Student • Developer</span>
+          <h1>Hi, I'm <span style="color:var(--brand)">Fathima Nifa </span>.<br/>I build clean, fast and user‑friendly web apps.</h1>
+          <p>I’m an HNDIT student passionate about modern front‑end, problem solving, and automation. Below you’ll find a selection of my projects, skills, and how to reach me.</p>
+          <div class="actions">
+            <a class="btn" href="#projects">View Projects →</a>
+            <a class="btn alt" href="#contact">Contact Me</a>
+            <a class="btn alt" href="resume.pdf" download>⬇️ Resume</a>
+          </div>
+        </div>
+        <div style="justify-self:end">
+          <div class="avatar shadow">
+            <img src="C:\xampp\htdocs\nifa\bdb61f7f-e1ba-4759-9f4d-c791ee83aa78.jpg" alt="Profile placeholder"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container about">
+        <div class="title"><h2>About</h2><div class="line"></div></div>
+        <div class="grid" style="grid-template-columns:1.2fr 1fr">
+          <div class="card">
+            <p>I'm a motivated student of Higher National Diploma in Information Technology (HNDIT). I love turning ideas into digital products. My interests include web development, UI design, and using AI tools to speed up workflows.</p>
+            <p>Currently exploring <strong>JavaScript, Python</strong> and <strong>databases</strong>. Looking for internships, freelance projects, and collaborations.</p>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <strong>Quick Info</strong>
+              <div class="grid" style="grid-template-columns:1fr 1fr">
+                <span class="muted">Based in</span><span>Sri Lanka</span>
+                <span class="muted">Email</span><span><a href="mailto:nifafathima275@gmail.com">nifafathima275@gmail.com</a></span>
+                <span class="muted">Phone</span><span><a href="tel:+94765789279">+94 765789279</a></span>
+                <span class="muted">Languages</span><span>Tamil, English</span>
+              </div>
+            </div>
+            <div class="card">
+              <strong>Highlights</strong>
+              <ul>
+                <li>Built 5+ mini‑projects using HTML, CSS, JS.</li>
+                <li>Comfortable with Git/GitHub and VS Code.</li>
+                <li>Strong teamwork & communication skills.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="title"><h2>Skills</h2><div class="line"></div></div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;align-items:start">
+          <div class="card">
+            <div class="grid" style="gap:16px">
+              <div class="skill"><span>HTML &amp; CSS</span><span>90%</span><div class="bar"><span style="width:90%"></span></div></div>
+              <div class="skill"><span>JavaScript (ES6+)</span><span>80%</span><div class="bar"><span style="width:80%"></span></div></div>
+              <div class="skill"><span>React (Basics)</span><span>60%</span><div class="bar"><span style="width:60%"></span></div></div>
+              <div class="skill"><span>Python</span><span>60%</span><div class="bar"><span style="width:60%"></span></div></div>
+              <div class="skill"><span>SQL</span><span>55%</span><div class="bar"><span style="width:55%"></span></div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="tags">
+              <span class="tag">Git &amp; GitHub</span>
+              <span class="tag">Responsive Design</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Linux Basics</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Problem Solving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="title"><h2>Projects</h2><div class="line"></div></div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <!-- Project Card -->
+          <article class="card projects">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1200&auto=format&fit=crop" alt="Project screenshot"/></div>
+            <h3>Student Portal UI</h3>
+            <p class="muted">Responsive dashboard for students to view courses, grades, and attendance.</p>
+            <div class="meta">
+              <div class="tags">
+                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+              </div>
+              <a class="btn alt" href="#" target="_blank" rel="noopener">Live</a>
+            </div>
+          </article>
+          <article class="card projects">
+            <div class="thumb"><img src="C:\Users\Admin\Pictures\Camera Roll\Screenshot 2025-09-06 102953.png" alt="Project screenshot"/></div>
+            <h3>Task Manager App</h3>
+            <p class="muted">Simple CRUD task app with localStorage and drag‑and‑drop.</p>
+            <div class="meta">
+              <div class="tags">
+                <span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
+              </div>
+              <a class="btn alt" href="#" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
+          <article class="card projects">
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1200&auto=format&fit=crop" alt="Project screenshot"/></div>
+            <h3>Portfolio Template</h3>
+            <p class="muted">Clean one‑page template with smooth scroll and dark mode.</p>
+            <div class="meta">
+              <div class="tags">
+                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">UI</span>
+              </div>
+              <a class="btn alt" href="#" target="_blank" rel="noopener">Live</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education / Timeline -->
+    <section id="education">
+      <div class="container">
+        <div class="title"><h2>Education</h2><div class="line"></div></div>
+        <div class="card timeline">
+          <div class="tl-item">
+            <small class="chip">2022-2023</small>
+            <h3>HNDIT — Higher National Diploma in Information Technology</h3>
+            <p>Key modules: Programming, Database Systems, Web Development, Networking, Systems Analysis.</p>
+          </div>
+          <div class="tl-item">
+            <small class="chip">2022-2023</small>
+            <h3>Certificate in Information and Communication Technology (NVQ Level-4) Vocational Training Authority of Sri Lanka, Sammanthurai</h3>
+            <p>Key modules: Programming, Database Systems, Web Development, Networking, Systems Analysis.</p>
+          </div>
+          <div class="tl-item">
+            <small class="chip">2020</small>
+            <h3>G.C.E. Advanced Level</h3>
+            <p>political science | Tamil | Islam</p>
+          </div>
+          <div class="tl-item">
+            <small class="chip">2017</small>
+            <h3>Department of Examinations, Sri Lanka. GCE (O/L) Examination</h3>
+            <p> Mathematics | tamil | science | English | History | Islam | Civics| Arabic Lit | Health Science</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="title"><h2>Contact</h2><div class="line"></div></div>
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <form id="contactForm">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="email" name="email" placeholder="Your email" required />
+              <textarea name="message" placeholder="Message" required></textarea>
+              <button class="btn" type="submit">Send Message</button>
+            </form>
+            <p id="formStatus" class="muted"></p>
+          </div>
+          <div class="grid">
+            <div class="card">
+              <strong>Let's connect</strong>
+              <p class="muted">I’m open to internship and freelance opportunities. Reach out via email or WhatsApp.</p>
+              <div class="grid" style="grid-template-columns:1fr 1fr">
+                <span>Email</span><a href="mailto:hello@nifafathima.dev">nifafathima275@gmail.com</a>
+                <span>WhatsApp</span><a href="https://wa.me/94765789279" target="_blank" rel="noopener">+94 765789279</a>
+                <span>GitHub</span><a href="#" target="_blank" rel="noopener">https://github.com/Fathinifa
+                
+                </a>
+                <span>LinkedIn</span><a href="#" target="_blank" rel="noopener">https://www.linkedin.com/in/nifa-fathima-</a>
+              </div>
+            </div>
+            <div class="card">
+              <strong>Download Resume</strong>
+              <p class="muted">Add your PDF as <code>resume.pdf</code> in the same folder as this file.</p>
+              <a class="btn" href="resume.pdf" download>⬇️ Get Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <span>© <span id="year"></span> Fathima Nifa. All rights reserved.</span>
+        <span class="muted">Built with ❤️ using HTML, CSS & JS.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animate skill bars on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.bar>span').forEach((el)=>{
+            const w = el.getAttribute('style').match(/width:(\d+%)/)[1];
+            el.style.width = 0; // reset
+            setTimeout(()=>{ el.style.width = w; }, 50);
+          });
+          io.unobserve(e.target);
+        }
+      })
+    },{threshold:.3});
+    io.observe(document.querySelector('#skills .card'));
+
+    // Theme toggle (light/dark)
+    const toggle = document.getElementById('themeToggle');
+    const storageKey = 'theme-preference';
+    function setTheme(t){ document.documentElement.dataset.theme = t; localStorage.setItem(storageKey,t); if(t==='light'){document.documentElement.style.setProperty('--bg','#f8fafc');document.documentElement.style.setProperty('--panel','#ffffff');document.documentElement.style.setProperty('--text','#0f172a');document.documentElement.style.setProperty('--muted','#475569');document.documentElement.style.setProperty('--shadow','0 10px 30px rgba(2,8,23,.08)');} else {document.documentElement.style.setProperty('--bg','#0b1220');document.documentElement.style.setProperty('--panel','#0f172a');document.documentElement.style.setProperty('--text','#e5e7eb');document.documentElement.style.setProperty('--muted','#9ca3af');document.documentElement.style.setProperty('--shadow','0 10px 30px rgba(2,8,23,.35)');} }
+    const pref = localStorage.getItem(storageKey);
+    if(pref){ setTheme(pref); }
+    toggle.addEventListener('click',()=>{ setTheme((document.documentElement.dataset.theme||'dark')==='dark'?'light':'dark'); });
+
+    // Fake contact submit (no backend). Replace with your endpoint if needed.
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Example: send to a Google Apps Script / Formspree endpoint here
+      document.getElementById('formStatus').textContent = `Thanks, ${data.name}! Your message has been recorded.`;
+      form.reset();
+    });
+
+    // Active nav link on scroll
+    const sections = ['about','skills','projects','education','contact'].map(id=>document.getElementById(id));
+    const navLinks = [...document.querySelectorAll('.nav a.link')];
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const id = entry.target.id;
+        const link = navLinks.find(a=>a.getAttribute('href')==='#'+id);
+        if(link){ link.style.borderColor = entry.isIntersecting? 'rgba(14,165,233,.6)' : 'transparent'; }
+      })
+    }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
+    sections.forEach(s=> spy.observe(s));
+  </script>
+</body>
+</html>
